@@ -1,0 +1,6 @@
+Create canvas and data block in the form builder
+
+1. Create CANVAS Name: CAN_EMP
+3. Create DATA BLOCK ⇨ EMP Put in CAN_EMP
+4. SAVE ⇨ TIBYAN_EMP.fmb
+5. COMPILE ⇨ TIBYAN_EMP.fmx
