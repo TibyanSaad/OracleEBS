@@ -1,0 +1,9 @@
+Query by example in EBS
+
+1. login into EBS.
+2. navigate to system administrator responsibility >security> user> define
+3. click view >query by example> enter
+        the fields should change from yellow to blue.
+4. then type 'T%' to see all the user starting with letter t.
+5. to execute click on view > query by example> run
+6. all the users starting with letter t should appear
