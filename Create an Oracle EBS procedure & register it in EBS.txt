@@ -1,0 +1,126 @@
+-- EBS PROCEDURE--
+CREATE OR REPLACE PROCEDURE TIBYAN_PR_EBS (ERRBUF OUT VARCHAR2,
+  RETCODE OUT NUMBER) IS
+BEGIN
+  FND_FILE.PUT_LINE(FND_FILE.OUTPUT,'WELCOME TO ORACLE EBS PR...!!!');
+END;
+/
+
+-- STEPS--
+Create an Oracle EBS procedure & register it in EBS
+1. login to EBS
+2. Create an executable: navigate to APPLICATION DEVELOPER> CONCURRENT> EXECUTABLE
+            Name: TIBYAN_PR_EBS
+            Short Name: TIBYAN_PR_EBS
+            Execution Method: PL/SQL Stored Procedure
+            Execution File Name: TIBYAN_PR_EBS
+                            <SAVE>
+3. TO CHECK IF IT IS CREATED GO TO View > Query by example > Enter
+            Name: TIBYAN_PR_EBS
+4. THEN View > Query by example > Run AND YOU CAN SEE THE PROCEDURE DETAILS
+5. create a program: navigate to APPLICATION DEVELOPER> CONCURRENT> PROGRAM
+            Name: TIBYAN_PR_EBS
+            Short Name: TIBYAN_PR_EBS
+            Application: AOL (application object library) <Tab>
+            Executable: TIBYAN_PR_EBS
+            Output: HTML
+                            <SAVE>
+6. Create a request group: navigate to System Administrator> Security>Responsibility>Request
+            Name: TIBYAN_RG_PGMS
+            Application: AOL (application object library) <Tab>
+            Program: TIBYAN_PR_EBS
+                            <SAVE>
+7.CREATE A NEW USER RESPONSIBILITY: NAVIGATE TO  System Administrator> Security> Responsibility> Define
+            Name: TIBYAN_RESP
+                            <SAVE>
+8. assign the responsibility to a user: System Administrator> Security> User> Define
+            view> query by example> enter
+                    user: TIBYAN
+            view> query by example> run
+       add the responsibility
+            TIBYAN_RESP
+9. create a request: navigate to View > Request >Submit a New Request >Single (Default) >OK
+            CLICK THE LOV To select a Program
+            TIBYAN_PR_EBS then Submit
+            Find
+            View Output
+
+
+-- EXCEPTION HANDLING --
+DECLARE
+  V_SAL NUMBER;
+BEGIN
+  SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = &ENO;
+  DBMS_OUTPUT.PUT_LINE('SAL= '||V_SAL);
+END;
+/
+
+-- OUTPUT--
+Enter value for eno: 7900
+old   4:   SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = &ENO;
+new   4:   SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = 7900;
+SAL= 950
+
+DECLARE
+  V_SAL NUMBER;
+BEGIN
+  SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = &ENO;
+  DBMS_OUTPUT.PUT_LINE('SAL= '||V_SAL);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  DBMS_OUTPUT.PUT_LINE('INPUT A VALID EMPNO!!!');
+END;
+/
+
+-- OUTPUT--
+Enter value for eno: 111
+old   4:   SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = &ENO;
+new   4:   SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = 111;
+INPUT A VALID EMPNO!!!
+
+
+
+DECLARE
+  V_SAL NUMBER;
+BEGIN
+  SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = '&ENO';
+  DBMS_OUTPUT.PUT_LINE('SAL= '||V_SAL);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  DBMS_OUTPUT.PUT_LINE('INPUT A VALID EMPNO!!!');
+  WHEN OTHERS THEN
+  DBMS_OUTPUT.PUT_LINE('CHECK YOUR PROGRAM');
+END;
+/
+
+-- OUTPUT--
+Enter value for eno: HI
+old   4:   SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = '&ENO';
+new   4:   SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = 'HI';
+CHECK YOUR PROGRAM
+
+
+
+DECLARE
+  V_SAL NUMBER;
+  ENO NUMBER(4) := '&ENO';
+BEGIN
+  SELECT SAL INTO V_SAL FROM EMP WHERE EMPNO = ENO;
+  DBMS_OUTPUT.PUT_LINE('SAL= '||V_SAL);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  DBMS_OUTPUT.PUT_LINE('INPUT A VALID EMPNO!!!');
+  WHEN OTHERS THEN
+  DBMS_OUTPUT.PUT_LINE('CHECK YOUR PROGRAM');
+END;
+/
+
+-- OUTPUT--
+Enter value for eno: 12345
+old   3:   ENO NUMBER(4) := '&ENO';
+new   3:   ENO NUMBER(4) := '12345';
+DECLARE
+*
+ERROR at line 1:
+ORA-06502: PL/SQL: numeric or value error: number precision too large
+ORA-06512: at line 3
