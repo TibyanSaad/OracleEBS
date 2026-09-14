@@ -1,0 +1,5 @@
+Place .fmx file in EBS
+
+1. SSH to EBS Server using WINSCP
+2. Navigate to /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+3. save TIBYAN_MASTER_DETAIL.fmx in that location.
