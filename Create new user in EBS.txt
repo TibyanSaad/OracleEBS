@@ -1,0 +1,10 @@
+Create new user in EBS
+
+1. login into EBS with USERNAME: OPERATIONS (ADMIN USER)
+2. navigate to the System Administrator RESPONSIBILITY > Security> User> Define
+3. the fields will be yellow by default so create a username and enter your password twice( field becomes white)
+4. add the following responsibilities for the user, Application Developer and System Administrator.
+5. save
+6. to check if the user has been created go to VIEW ⇨ QUERY BY EXAMPLE ⇨ ENTER
+7. type your username then go to VIEW ⇨ QUERY BY EXAMPLE ⇨ RUN
+8. the new user will be saved in the FND_USER table
