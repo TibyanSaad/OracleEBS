@@ -1,0 +1,15 @@
+Create master block "DEPT" and detail block "EMP"
+
+1. go to oracle forms builder
+2. Create CANVAS called CAN_DEPT_EMP
+3. Create DATA BLOCK called DEPT and put it in CAN_DEPT_EMP
+4. Create DATA BLOCK called EMP and put it in CAN_DEPT_EMP
+5. you will be prompted to create a relationship
+6. Select Remove Auto Join and Click on Create Relationship
+            Master Block: DEPT
+            Master Item: DEPTNO
+            Detail Item: DEPTNO
+            Join Displayed: EMP.DEPTNO = DEPT.DEPTNO
+7. 3 Triggers and 3 Programs will be written by default
+8. SAVE to create a TIBYAN_MASTER_DETAIL.fmb
+9. COMPILE create a TIBYAN_MASTER_DETAIL.fmx
