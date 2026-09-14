@@ -1,3 +1,5 @@
+-- Create procedure and function using SQLPlus
+
 SELECT * FROM EMP WHERE COMM IS NULL;
 
 SELECT * FROM EMP WHERE COMM IS NOT NULL;
