@@ -1,0 +1,45 @@
+-- ORACLE REPORT WITH A PARAMETER--
+
+1. Report wizard
+2. Create both web and paper layout
+3. Tabular
+	Name: EMP DETAILS BASED ON DEPTNO
+4. SQL Query
+5. Connect (provide username,password and database)
+6. use this sql query: SELECT * FROM EMP WHERE DEPTNO = :DNO
+7. select the fields to be displayed
+8. select the aggregate functions you require.
+9. select your theme
+10. TYPE DEPTNO AND CLICK RUN
+11. save the report as .rdf
+12. register report in oracle ebs
+	a. move .rdf file to ebs server (fnd/12.0.0/reports/US) using WINSCP
+	b. create an executable
+		Executable: TIBYAN_PARA_REP
+		Short Name: TIBYAN_PARA_REP
+		Application: AOL
+		Execution method: Oracle Reports
+		Execution file name: TIBYAN_EMP
+			<save>
+	c. Create a concurrent program
+		Program: TIBYAN_PARA_REP_PG
+		Short name: TIBYAN_PARA_REP_PG
+		Application: AOL
+		Executable name: TIBYAN_EMP
+		Format: HTML
+		STYLE: A4
+	d. click on parameters
+		Seq: 1
+		Parameter: DNO
+		Value set: NUMBER_15
+		Token: DNO
+			<SAVE>
+	E. Add the program to the existing request group
+		View> Query by example> enter
+			Group: TIBYAN_PARA_REP_PG
+		View> Query by example> run
+			add the program TIBYAN_PARA_REP_PG
+			<SAVE>
+	f. Switch to the responsibility and create a request.
+	g. it will ask for DNO, pass the parameter.
+	h. submit the request and view the output.
