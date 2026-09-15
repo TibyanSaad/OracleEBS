@@ -12,6 +12,7 @@ Create an Oracle EBS procedure & register it in EBS
 2. Create an executable: navigate to APPLICATION DEVELOPER> CONCURRENT> EXECUTABLE
             Name: TIBYAN_PR_EBS
             Short Name: TIBYAN_PR_EBS
+            Application: AOL (Application Object Library) <tab>
             Execution Method: PL/SQL Stored Procedure
             Execution File Name: TIBYAN_PR_EBS
                             <SAVE>
@@ -32,18 +33,21 @@ Create an Oracle EBS procedure & register it in EBS
                             <SAVE>
 7.CREATE A NEW USER RESPONSIBILITY: NAVIGATE TO  System Administrator> Security> Responsibility> Define
             Name: TIBYAN_RESP
+            Application: AOL (application object library) <Tab>
+            Key: TIBYAN_RESP_KEY
+            Name: Standard
+            Menu: Position Control, Vision University
                             <SAVE>
-8. assign the responsibility to a user: System Administrator> Security> User> Define
+8. Assign the responsibility to a user: System Administrator> Security> User> Define
             view> query by example> enter
                     user: TIBYAN
             view> query by example> run
        add the responsibility
             TIBYAN_RESP
-9. create a request: navigate to View > Request >Submit a New Request >Single (Default) >OK
+9. create a request: switch to your responsibility then navigate to View > Request >Submit a New Request >Single (Default) >OK
             CLICK THE LOV To select a Program
             TIBYAN_PR_EBS then Submit
-            Find
-            View Output
+            Find> View Output
 
 
 -- EXCEPTION HANDLING --
@@ -124,18 +128,3 @@ DECLARE
 ERROR at line 1:
 ORA-06502: PL/SQL: numeric or value error: number precision too large
 ORA-06512: at line 3
-
-
-CREATE OR REPLACE PROCEDURE TIBYAN_PR_SYSDT(ERRBUF OUT VARCHAR2,
-    RETCODE OUT NUMBER) IS
-V_DT DATE;
-BEGIN
-  SELECT SYSDATE INTO V_DT FROM DUAL;
-  FND_FILE.PUT_LINE(FND_FILE.LOG,'YOU CAN SEE LOG DETAILS HERE!');
-  FND_FILE.PUT_LINE(FND_FILE.OUTPUT,'CURRENT DATE =' || V_DT);
-EXCEPTION
-  WHEN OTHERS THEN
-  FND_FILE.PUT_LINE(FND_FILE.OUTPUT,'CHECK YOUR PROGRAM: '
-                      || ERRBUF||'ERRCODE='||RETCODE);
-END;
-/
