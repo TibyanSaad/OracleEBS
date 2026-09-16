@@ -1,0 +1,26 @@
+DECLARE
+  FAC NUMBER := 1;
+  N NUMBER := &NUM;
+  e_negative_number  EXCEPTION;
+BEGIN
+
+  IF N < 0 THEN
+    RAISE e_negative_number;
+  END IF;
+
+  WHILE N > 0 LOOP
+    FAC := N*FAC;
+    N:= N-1;
+  END LOOP;
+
+DBMS_OUTPUT.PUT_LINE(' FACTORIAL IS ' || FAC);
+
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    dbms_output.put_line('ERROR: Please enter a number.');
+  WHEN e_negative_number THEN
+    dbms_output.put_line('Error: factorial is not defined for negative numbers.');
+  WHEN OTHERS THEN
+    dbms_output.put_line('ERROR: CHECK YOUR PROGRAM');
+END;
+/
