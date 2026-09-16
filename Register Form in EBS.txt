@@ -1,0 +1,40 @@
+a. move .fmx file to ebs server (fnd/12.0.0/form/US) using WINSCP
+1. login to EBS
+2. Create a form: navigate to APPLICATION DEVELOPER> APPLICATION> FORM
+            From: TIBYAN_EMP
+            Application: AOL (application object library) <Tab>
+            User Form Name: TIBYAN_EMP
+                            <SAVE>
+3. TO CHECK IF IT IS CREATED GO TO View > Query by example > Enter
+            Name: TIBYAN_EMP
+4. THEN View > Query by example > Run AND YOU CAN SEE THE DETAILS
+5. create a function: navigate to APPLICATION DEVELOPER> APPLICATION> FUNCTION
+            FUNCTION: TIBYAN_EMP
+            USER Function Name: TIBYAN_EMP
+		<click form tab>
+            Function: TIBYAN_EMP
+            Form: TIBYAN_EMP <Tab>
+                            <SAVE>
+6.Create a menu: APPLICATION DEVELOPER> APPLICATION> MENU
+		Menu: TIBYAN_FORM_MENU
+		User Menu Name: TIBYAN_FORM_MENU
+		SEQ: 1
+		Prompt: EMP
+		Function: TIBYAN_EMP
+			<SAVE>
+
+7.CREATE A NEW USER RESPONSIBILITY: NAVIGATE TO  System Administrator> Security> Responsibility> Define
+            Name: TIBYAN_FORM_RESP
+	Application: AOL
+	Responsibility key: TIBYAN_FORM_RESP_KEY
+Name: Standard
+Application: AOL
+Menu: TIBYAN_FORM_MENU
+                            <SAVE>
+8. Assign the responsibility to a user: System Administrator> Security> User> Define
+            view> query by example> enter
+                    user: TIBYAN
+            view> query by example> run
+       add the responsibility
+            TIBYAN_FORM_RESP
+9. Navigate to TIBYAN_FORM_RESP responsibility
