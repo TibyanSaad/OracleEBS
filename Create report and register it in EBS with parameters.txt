@@ -19,13 +19,13 @@
 		Short Name: TIBYAN_PARA_REP
 		Application: AOL
 		Execution method: Oracle Reports
-		Execution file name: TIBYAN_EMP
+		Execution file name: TIBYAN_PARA_REP
 			<save>
 	c. Create a concurrent program
 		Program: TIBYAN_PARA_REP_PG
 		Short name: TIBYAN_PARA_REP_PG
 		Application: AOL
-		Executable name: TIBYAN_EMP
+		Executable name: TIBYAN_PARA_REP_PG
 		Format: HTML
 		STYLE: A4
 	d. click on parameters

@@ -1,0 +1,58 @@
+-- procedure --
+CREATE OR REPLACE PROCEDURE TIBYAN_PR_FAC (ERRBUF OUT VARCHAR2,RETCODE OUT NUMBER,NUM IN NUMBER) IS
+  FAC NUMBER := 1;
+  N NUMBER := NUM;
+  e_negative_number  EXCEPTION;
+BEGIN
+
+  IF N < 0 THEN
+    RAISE e_negative_number;
+  END IF;
+
+  WHILE N > 0 LOOP
+    FAC := N*FAC;
+    N:= N-1;
+  END LOOP;
+
+FND_FILE.PUT_LINE(FND_FILE.OUTPUT,' FACTORIAL IS ' || FAC);
+
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    FND_FILE.PUT_LINE(FND_FILE.OUTPUT,'ERROR: Please enter a number.');
+  WHEN e_negative_number THEN
+    FND_FILE.PUT_LINE(FND_FILE.OUTPUT,'Error: factorial is not defined for negative numbers.');
+  WHEN OTHERS THEN
+    FND_FILE.PUT_LINE(FND_FILE.OUTPUT,'ERROR: CHECK YOUR PROGRAM');
+END;
+/
+
+-- steps --
+1.login to ebs
+2. create an executable:
+		Executable: TIBYAN_PR_FAC
+		Short Name: TIBYAN_PR_FAC
+		Application: AOL
+		Execution method: Oracle Reports
+		Execution file name: TIBYAN_PR_FAC
+			<save>
+3. Create a concurrent program:
+		Program: TIBYAN_PR_FAC_PG
+		Short name: TIBYAN_PR_FAC_PG
+		Application: AOL
+		Executable name: TIBYAN_PR_FAC_PG
+		Format: HTML
+		STYLE: A4
+4. click on parameters
+		Seq: 1
+		Parameter: N
+		Value set: NUMBER_15
+			<SAVE>
+5. Add the program to the existing request group
+		View> Query by example> enter
+			Group: TIBYAN_PR_FAC_PG
+		View> Query by example> run
+			add the program TIBYAN_PR_FAC_PG
+			<SAVE>
+6. Switch to the responsibility and create a request.
+7. it will ask for N, pass the parameter.
+8. submit the request and view the output.
