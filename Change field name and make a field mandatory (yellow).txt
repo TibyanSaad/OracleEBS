@@ -24,17 +24,12 @@
 
 -- CHANGING FIELD TO MANDATORY --
 1. Login to EBS
-2. Navigate to SYSTEM ADMINISTRATOR> SECURITY> USER> DEFINE
-3. View> Query by Example > Enter and search for your user TIBYAN% and View> Query by Example > RUN
-4. Add Human Resource, Vision Enterprises Responsibility
-
-
-5. navigate to that responsibility PEOPLE> ENTER AND MAINTAIN
-6. Click on the field that you want to change the name of
-7. go to HELP> DIAGNOSTICS> EXAMINE AND NOTE DOWN THE BLOCK AND FIELD NAME.
+2. navigate to the Human Resource, Vision Enterprises Responsibility PEOPLE> ENTER AND MAINTAIN
+3. Click on the field that you want to change the name of
+4. go to HELP> DIAGNOSTICS> EXAMINE AND NOTE DOWN THE BLOCK AND FIELD NAME.
 		Block: Person
 		Field: LAST_NAME
-8. go to HELP > DIAGNOSTICS> CUSTOM CODE> PERSONLIZE
+5. go to HELP > DIAGNOSTICS> CUSTOM CODE> PERSONLIZE
 		Seq: 15
 		DESCRIPTION: CHANGING LAST NAME FIELD
 		Level: Function

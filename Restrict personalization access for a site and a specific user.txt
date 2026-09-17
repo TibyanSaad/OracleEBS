@@ -1,0 +1,26 @@
+-- Restricting personalization access (Site level) --
+1.Login to EBS
+2.Navigate to SYSTEM ADMINSTRATOR> PROFILE> SYSTEM
+		DISPLAY:  site
+		Profile: UTIL%
+		<FIND>
+		Profile Options Name: Utilities:Diagnostics
+		Site: No
+		Profile Options Name: Utilities:SQL Trace
+		Site: No
+to test go back to the responsibility and try to personalize and an error will appear
+
+
+-- Restricting personalization access (User level) --
+1.Login to EBS
+2.Navigate to SYSTEM ADMINSTRATOR> PROFILE> SYSTEM
+		DISPLAY:  User
+		User: Razan
+		Profile: UTIL%
+		<FIND>
+		Profile Options Name: Utilities:Diagnostics
+		Site: No
+		Profile Options Name: Utilities:SQL Trace
+		Site: No
+to test let the user go back to the responsibility and try to personalize and an error will appear
+
