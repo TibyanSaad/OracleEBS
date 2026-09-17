@@ -1,0 +1,50 @@
+-- CHANGING FIELD NAME --
+1. Login to EBS
+2. Navigate to SYSTEM ADMINISTRATOR> SECURITY> USER> DEFINE
+3. View> Query by Example > Enter and search for your user TIBYAN% and View> Query by Example > RUN
+4. Add Human Resource, Vision Enterprises Responsibility
+5. navigate to that responsibility PEOPLE> ENTER AND MAINTAIN
+6. Click on the field that you want to change the name of
+7. go to HELP> DIAGNOSTICS> EXAMINE AND NOTE DOWN THE BLOCK AND FIELD NAME.
+		Block: Person
+		Field: LAST_NAME
+8. go to HELP > DIAGNOSTICS> CUSTOM CODE> PERSONLIZE
+		Seq: 15
+		DESCRIPTION: CHANGING LAST NAME FIELD
+		Level: Function
+	< click on actions tab>
+		Seq: 1
+		Type: Property
+		Language: All
+		Object Type: Item
+		Target Object: PERSON.LAST_NAME
+		Property Name: PROMPT_TEXT
+		Value: Last Name
+	<click validate and then apply now and save>
+
+-- CHANGING FIELD TO MANDATORY --
+1. Login to EBS
+2. Navigate to SYSTEM ADMINISTRATOR> SECURITY> USER> DEFINE
+3. View> Query by Example > Enter and search for your user TIBYAN% and View> Query by Example > RUN
+4. Add Human Resource, Vision Enterprises Responsibility
+
+
+5. navigate to that responsibility PEOPLE> ENTER AND MAINTAIN
+6. Click on the field that you want to change the name of
+7. go to HELP> DIAGNOSTICS> EXAMINE AND NOTE DOWN THE BLOCK AND FIELD NAME.
+		Block: Person
+		Field: LAST_NAME
+8. go to HELP > DIAGNOSTICS> CUSTOM CODE> PERSONLIZE
+		Seq: 15
+		DESCRIPTION: CHANGING LAST NAME FIELD
+		Level: Function
+	< click on actions tab>
+		Seq: 1
+		Type: Property
+		Language: All
+		Object Type: Item
+		Target Object: PERSON.LAST_NAME
+		Property Name: Required
+		Action: True
+	<click validate and then apply now and save>
+
