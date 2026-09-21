@@ -1,0 +1,15 @@
+1. Open TIBYAN_EMP.fmb and save as TIBYAN_EMP_LOV.fmb
+2.Click LOVs and click on wizard
+		New Record Group Based on a query
+		SELECT DEPTNO FROM EMP
+		Move DEPTNO in LOV Columns
+		Return Value> Look up return item> EMP.DEPTNO
+		Title: LOV FOR DEPTNO
+		move EMP.DEPTNO to Assigned Items
+		<Finish>
+		<SAVE AND COMPILE>
+3. REGISTER THE FORM IN EBS
+4. To view the form go the responsibility and run the form and it should appear
+5. click on view> clear
+6. add values to the items to insert a record and click save
+7. the record is inserted into the DB (check using SELECT * FROM EMP;)
