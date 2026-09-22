@@ -1,0 +1,33 @@
+-- VALUE SET --
+APPLICATION DEVELOPER> APPLICATION>VALIDATION> SET
+Value Set Name: TIBYAN_VS_INDEP
+List Type: List of Values
+Security Type: No Security
+Format Type: Char
+Maximum Size: 20
+Validation Type: Independent
+ <Save>
+Create a new set File> New
+Value Set Name: TIBYAN_VS_DEP_1
+List Type: List of Values
+Security Type: No Security
+Format Type: Char
+Maximum Size: 20
+Validation Type: Dependent
+<Edit Information>
+Name: TIBYAN_VS_INDEP
+Value: OMAN
+Description: MUSACT
+ <Save>
+Create a new set File> New
+Value Set Name: TIBYAN_VS_Dep_2
+List Type: List of Values
+Security Type: No Security
+Format Type: Char
+Maximum Size: 20
+Validation Type: Dependent
+<Edit Information>
+Name: TIBYAN_VS_INDEP
+Value: UAE
+Description: DUBAI
+ <Save>
