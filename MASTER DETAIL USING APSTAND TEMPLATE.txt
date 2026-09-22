@@ -1,0 +1,56 @@
+1. Using WinSCP SSH to the EBS server
+2. Navigate to /u01/install/VISION/fs1/EBSapps/appl/au/12.0.0/forms/US and copy the APSTAND.fmb file to the machine
+3. Go to oracle forms builder
+	File> Open> APSTAND.fmb
+4. Save the loaded file as:
+	File> save as> TIBYAN_MD.fmb
+5. Rename the module by right-clicking on the icon and selecting property palette
+	Name: TIBYAN_MD
+6. Delete the datablock called BLOCKNAME, then delete the canvas with the same name and then final the window with the same name.
+7. Create a new window by clicking on Windows then create.
+	Name: TIBYAN_MASTER_DETAIL_WINDOW
+8. Create a new CANVAS by clicking on canvases then create.
+	Name: TIBYAN_MD_CAN
+9. Create a new DATABLOCK by clicking on datablocks then create.
+	Table or view
+ 	Table: DEPT table <connect to DB>
+	Data Block Name: DEPT
+	Canvas: TIBYAN_MD_CAN
+	Form
+	Frame Title: DEPARTMENT DETAILS
+	Records Displayed: 1
+10. Create a new DATABLOCK by clicking on datablocks then create.
+	Table or view
+ 	Table: EMP table <connect to DB>
+	<Create Relationship>
+	FK_DEPTNO
+	Disable Auto-join
+	Detail Item: EMPNO
+	Data Block Name: EMP
+	Canvas: TIBYAN_MD_CAN
+	Tabular
+	Frame Title: EMPLOYEE DETAILS
+Records Displayed: 5
+11. Save the form and compile it
+12. Go to WinSCP and copy the TIBYAN_MD.fmx in /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+13. Login to EBS
+14. go to APPLICATION DEVELOPER> APPLICATION> FORM and create a form:
+	Form: TIBYAN_MD
+	Application: Application Object Library
+	User Form Name: TIBYAN_MD
+	<save>
+15.go to APPLICATION DEVELOPER> APPLICATION> FUNCTION and create a function:
+	Function: TIBYAN_MD
+	User Function Name: TIBYAN_MD
+<go to form Tab>
+	Form: TIBYAN_MD <Tab>
+	<save>
+16.go to APPLICATION DEVELOPER> APPLICATION> MENU and find the existing menu
+	VIEW> QUERY BY EXAMPLE> ENTER
+	Menu: TIBYAN_FORM_MENU
+	VIEW> QUERY BY EXAMPLE> RUN
+	Seq: 5
+	Prompt: MD_FORM
+	Function: TIBYAN_MD
+	<save>
+17. Go to TIBYAN_RESP_FORM and open MD_FORM
