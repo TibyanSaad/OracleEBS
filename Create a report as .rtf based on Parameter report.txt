@@ -1,0 +1,16 @@
+-- Oracle parameter Report --
+1. Navigate to APPLICATION> CONCURRENT> PROGRAMS and
+	VIEW > QUERY BY EXAMPLE> ENTER
+		TIBYAN_PARA_REP
+	VIEW> QUERY BY EXAMPLE> RUN
+2. edit that programs format to XML then save.
+3. Switch to the responsibility that is related to that program and create a request.
+4. submit the request and view the output.
+5. right-click on the output and click save page, and save the page as .xml
+6. open word document and go to the BI Publisher ribbon
+7. select Sample XML and the file TIBYAN_PARA_REP.xml
+8. select table wizard
+	table
+	select all the fields
+	group by deptno
+9. save and review the output as a pdf file
