@@ -1,0 +1,46 @@
+-- Oracle Master Detail Report --
+1. Report wizard
+2. Create both web and paper layout
+3. GROUP ABOVE
+	Name: MASTER DETAIL REPORT
+4. SQL Query
+5. Connect (provide username, password and database)
+6. Query builder, search for table name (DEPT AND EMP) then click include
+7. select the field to be grouped the select all the fileds to be displayed.
+8. select the aggregate functions you require.
+9. select your theme
+10. save the report as .rdf
+
+11. register report in oracle ebs
+	a. move .rdf file to ebs server (fnd/12.0.0/reports/US) using WINSCP
+	b. create an executable
+		Executable: TIBYAN_MASTER_DETAIL_REP
+		Short Name: TIBYAN_MASTER_DETAIL_REP
+		Application: AOL
+		Execution method: Oracle Reports
+		Execution file name: TIBYAN_MASTER_DETAIL_REP
+			<save>
+	c. Create a concurrent program
+		Program: TIBYAN_MASTER_DETAIL_REP
+		Short name: TIBYAN_MASTER_DETAIL_REP
+		Application: AOL
+		Executable name: TIBYAN_MASTER_DETAIL_REP
+		Format: XML
+		STYLE: A4
+			<SAVE>
+	d. Add the program to the existing request group
+		View> Query by example> enter
+			Group: TIBYAN_RG_PGMS
+		View> Query by example> run
+			add the program TIBYAN_MASTER_DETAIL_REP
+			<SAVE>
+	e. Switch to the responsibility and create a request.
+	f. submit the request and view the output.
+12. right click on the output and click save page, and save the page as .xml
+13. open word document and go to the BI Publisher ribbon
+14. select Sample XML and the file TIBYAN_MASTER_DETAIL_REP.xml
+15. select table wizard
+	table
+	select all the fields
+	group by deptno
+16. save and review the output as a pdf file
