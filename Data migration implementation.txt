@@ -1,0 +1,29 @@
+-- Data Migration --
+1. Create a control file
+	LOAD DATA INFILE '/u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US/TIBYANDATA.dat'
+	INTO TABLE TIBYAN_TEST
+	FIELDS TERMINATED BY ","
+	OPTIONALLY ENCLOSED BY '"'
+	(ID,NAME,COURSE)
+		<Save> TIBYANCONTROL.ctl
+2.Create a data file
+	1,'Tibyan','Oracle'
+	2,'Razan','C++'
+	3,'Mariya','Cybersecurity'
+	4,'Safa', 'Java'
+	5,'Maryam',Oracle'
+		<Save> TIBYANDATA.dat
+3. Create a table using SQLPlus
+	SQL> CREATE TABLE TIBYAN_TEST
+		(ID NUMBER,
+    		NAME CHAR(50),
+    		COURSE VARCHAR2(100)
+  		);
+4. SSH to the EBS server and move TIBYANCONTROL.ctl and TIBYANDATA.dat to /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US/
+5. open putty
+	C:\Users\ask16> cd /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US/
+	C:\Users\ask16> sqlldr
+	C:\Users\ask16> export ORACLE_SID=EBSDB
+	C:\Users\ask16> sqlldr userid=apps/apps control='TIBYANCONTROL.ctl'
+6. using SQLPlus check if the records have been inserted
+	SELECT * FROM TIBYAN_TEST;
