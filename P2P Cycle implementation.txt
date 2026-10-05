@@ -1,0 +1,158 @@
+-- P2P Cycle--
+1.log in to EBS
+2. Assign responsibilities to your user by navigating to SYSTEM ADMINISTRATOR> SECURITY> USER> DEFINE
+3. add the following responsibilities
+	INVENTORY, VISION OPERATIONS(USA)
+	PURCHASING, VISION OPERATIONS(USA)
+	PAYABLES, VISION OPERATIONS(USA)
+	GENERAL LEDGER, VISION OPERATIONS(USA)
+4.add a preparer (Manager)
+	Person: Stock, Ms. Pat <Tab>
+		<SAVE>
+5. Navigate to INVENTORY, VISION OPERATIONS(USA)>ITEMS> MASTER ITEMS
+	Find:v%
+	V1 Vision Operations
+		Item: XX_TIB_LAPTOP
+		Description: LAPTOP FOR CODELINE - MUSCAT
+		TOOLS> COPY FROM..
+			Template: Finished Goods
+				<Apply>
+				<Done>
+		Purchasing tab
+		List Price: 100
+			<Save>
+6. Navigate to INVENTORY, VISION OPERATIONS(USA)>TRANSACTIONS> MISCELLANEOUS TRANSACTIONS
+	Type: Miscellaneous receipt
+		<Transaction Lines>
+			Item: XX_TIB_LAPTOP
+			Subinventory: Stores
+			UOM(Unit of Measurement): Ea (Each)
+			Quantity: 1000
+			Account: Account Alias: Employee Exp
+		<Save>
+7. To query navigate to INVENTORY, VISION OPERATIONS(USA)>ON-HAND AVAILABILITY> ON-HAND QUANTITY
+	Item/Revision: XX_TIB_LAPTOP
+		<FIND>
+		<Availability>
+8. SQL> SELECT SEGMENT1 FROM MTL_SYSTEM_ITEMS_B WHERE SEGMENT1 = 'XX_TIB_LAPTOP';
+
+SEGMENT1
+----------------------------------------
+XX_TIB_LAPTOP
+
+9.  Navigate to PURCHASING, VISION OPERATIONS(USA)> REQUISITIONS> REQUISITIONS
+	-- HEADER INFORMATION --
+	Operating Unit: Vision Operations
+	Type: Purchase Requisition
+	Preparer: Stock, Ms. Pat
+	-- LINES INFORMATION --
+	Num:1
+	Type: Goods
+	Item: XX_TIB_LAPTOP <Tab>
+	Quantity: 2
+	Need-By: 30-SEP-2026 00:00:00
+	-- DISTRIBUTION INFORMATION --
+	Location: Auckland
+	Subinventory: Stores
+	Supplier: Abbott Laboratories, Inc.
+	Site: CORP HQ
+		<Save>
+		Number: 16080
+			<APPROVE>
+			Print <OK>
+10.Navigate to PURCHASING, VISION OPERATIONS(USA)> REQUESITIONS> REQUISITION SUMMARY
+	Requisition Number: 16080
+		<Find>
+		<Lines>
+		<Distribution>
+
+SELECT * FROM PO_REQUISITION_HEADERS_ALL WHERE SEGMENT1='16080';
+SELECT * FROM PO_REQUISITION_LINES_ALL WHERE REQUISITION_HEADER_ID='567887';
+SELECT * FROM PO_REQ_DISTRIBUTIONS_ALL WHERE REQUISITION_LINE_ID='618329';
+
+11.Navigate to PURCHASING, VISION OPERATIONS(USA)> RFQ's AND REQUESITIONS>RFQ
+	Operating Unit: Vision Operations
+	Type: Standard RFQ
+	Ship-To: Auckland
+	Close Date: 30-SEP-2026
+	Item: XX_TIB_LAPTOP
+	<Price Breaks>
+		Quantity: 2
+		Org: V1
+		Ship-To: Auckland
+			<SAVE>
+			RFQ Number: 368
+				<Suppliers>
+					Supplier: Abbott Laboratories, Inc.
+					Site: CORP HQ
+						<Save>
+			TOOLS> COPY DOCUMENT
+			Action: Entire RFQ
+			Type: Standard Quotation
+			Supplier: Abbott Laboratories, Inc.
+			Site: CORP HQ
+			<OK>
+				quotation number: 558
+SELECT * FROM PO_HEADERS_ALL WHERE SEGMENT1 ='368' AND TYPE_LOOKUP_CODE='RFQ';
+SELECT * FROM PO_HEADERS_ALL WHERE SEGMENT1 ='558' AND TYPE_LOOKUP_CODE='QUOTATION';
+12. .Navigate to PURCHASING, VISION OPERATIONS(USA)> PURCHASE ORDER> PURCHASE ORDER
+	Operating Unit: Vision Operations
+	Supplier: Abbott Laboratories, Inc.
+	Ship-To: Auckland
+	Item: XX_TIB_LAPTOP
+	Quantity: 2
+	Promised: 30-SEP-2026 00:00:00
+	Need-By: 30-SEP-2026 00:00:00
+		<SAVE>
+		PO, Rev: 6735
+			<Approve>
+			Print
+				<ok>
+SELECT * FROM PO_HEADERS_ALL WHERE SEGMENT1 ='6735';
+SELECT * FROM PO_LINES_ALL WHERE PO_HEADER_ID='360109';
+13. .Navigate to PURCHASING, VISION OPERATIONS(USA)> RECEIVING >RECEIPTS
+	V1 Vision Operations
+	Purchase Order: 6735 <tab>
+		<Find>
+			Comment: XX_TIB_LAPTOP -2 NOS DELIVERED
+			<SAVE>
+				Reciept:9105
+SELECT * FROM RCV_SHIPMENT_HEADERS WHERE RECEIPT_NUM = '9105';
+14. Navigate to PAYABLES, VISION OPERATIONS(USA)>INVOICES> ENTRY> INVOICES
+	PO Number: 6735
+	Invoice Date: 29-SEP-2026
+	Invoice Num: TIBYANINV001
+	Invoice Amount: 200
+	Payment Method: CHECK
+		<LINES>
+		Amount: 200
+		PO Line: 1	<LOV>
+		PO Shipment: 1 	<LOV>
+		<ACTIONS ..1>
+		Validate
+		<Ok>
+		<HOLDS>
+		<RELEASE ..1>
+		Release Name: <LOV>
+			<ACTIONS ..1>
+				Create Accounting
+				Final Post
+				<OK>
+			<Save>
+SELECT * FROM AP_INVOICES_ALL WHERE INVOICE_NUM ='TIBYANINV001';
+SELECT * FROM AP_INVOICE_LINES_ALL WHERE INVOICE_ID ='653097';
+15.  Navigate to PAYABLES, VISION OPERATIONS(USA)>PAYMENTS>ENTRY> PAYMENTS
+	Type: Manual
+	Trading Partner: Abbott Laboratories, Inc.
+	Payment Date: 29-SEP-2026
+	Bank Account: BofA-204
+	Payment Process Profile: Check - USD
+	<ACTIONS..1>
+	Create accounting
+		final post
+			<OK>
+16. SELECT * FROM GL_JE_HEADERS WHERE NAME LIKE '%26 Purchase Invoices USD' ORDER BY 1 DESC;
+copy Name: SEP-26 Purchase Invoices USD
+Navigate to GENERAL LEDGER, VISION OPERATIONS(USA)> JOURNAL> ENTER
+	Journal: SEP-26 Purchase Invoices USD
+	<FIND>
