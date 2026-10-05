@@ -1,0 +1,46 @@
+-- Oracle Workflow --
+1. login to EBS as your user and navigate to SYSTEM ADMINSTRATOR> SECURITY> USER> DEFINE
+2. Query your user and add a new responsibility called Workflow Administrator Web Applications
+3. Navigate to Workflow Administrator Web Applications> ADMINSTRATOR WORKFLOW> ADMINSTRATION and realise how only sysadmin can work on it
+4. open Oracle Workflow Builder and click file> Quick Start Wizard
+	Internal Name: TIB_WF
+	Display Name: TIB_WF
+	Internal Name: TIB_PRC
+	Display Name: TIB_PRC
+		<OK>
+5. right click message > new message
+	Internal Name: TIB_MSG
+	Display Name: TIB_MSG
+		<BODY>
+	Test Body: Hello Tibyan!! Have  a nice day:)
+	<Apply> <Ok>
+6. Right click notifications > new notification
+	Internal Name: TIB_NOTIFY
+	Display Name: TIB_NOTIFY
+	Message: TIB_MSG
+		<Apply> <Ok>
+7. Drag your notification in between the process
+6. right click and hold the start button to the notification and do the same for notification and end
+8. right click on the notification icon (TIB_NOTIFY) > properties
+	<Node>
+	Value: TIBYAN (to notify me)
+	<Apply> <Ok>
+9. file> save as
+	Database
+	User: apps
+	Connect :EBSDB
+		<OK>
+10. go back to EBS and Navigate to Workflow Administrator Web Applications> ADMINSTRATOR WORKFLOW> DEVELOPER STUDIO
+	Workflow Type: TIB_WF
+	Type Internal Name: TIB_WF
+		<GO> (cannot run)
+11. log out of your user and login as SYSADMIN
+12. Navigate to Workflow Administrator Web Applications> ADMINSTRATOR WORKFLOW> DEVELOPER STUDIO
+	Workflow Type: TIB_WF
+	Type Internal Name: TIB_WF
+		<GO> (you can see run)
+	<run>
+	Item Key: 1
+	User Key: 1
+	top <Submit> button
+13. login as your user and see your notification
