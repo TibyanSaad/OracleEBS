@@ -1,0 +1,13 @@
+-- report w/use subject area --
+1. Log in to oracle fusion
+2. tools>reports and analytics> browse catalog
+3. go to create> report > use subject area
+        subject area: payables invoices - Transactions Real Time
+            <next>
+        page header
+        table with columns
+            <next>
+        drag the columns and uncheck show grand totals row
+            <finish>
+        save as : reports_subject_area
+4. CLICK on pdf sign on top right corner
