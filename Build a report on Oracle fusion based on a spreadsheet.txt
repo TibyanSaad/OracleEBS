@@ -1,0 +1,13 @@
+-- report w/speadsheet --
+1. Log in to oracle fusion
+2. tools>reports and analytics> browse catalog
+3. go to create> report > upload spreadsheet
+        browse the retail Inventory.xsl file
+            <next>
+        page header
+        table with columns
+            <next>
+        drag the columns and uncheck show grand totals row
+            <finish>
+        save as : reports_products_sold_xls
+4. CLICK on pdf sign on top right corner
