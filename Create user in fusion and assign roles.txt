@@ -1,0 +1,17 @@
+-- create a new user --
+1. log in to cloud fusion as A.A
+2. go to tools> security console
+> users> add user account
+	first name: T
+	last name: Saad
+	password:
+	<add role>
+	IT Security Manager
+		ORA_FND_IT_SECURITY_MANAGER_JOB
+	<ADD ROLE MEMBERSHIP>
+	Employee
+		ORA_PER_EMPLOYEE_ABSTRACT
+	<ADD ROLE MEMBERSHIP>
+	<DONE>
+	<save and close>
+4. log in as your user and see all the roles added.

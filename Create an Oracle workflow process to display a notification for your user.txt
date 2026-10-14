@@ -1,7 +1,7 @@
 -- Oracle Workflow --
-1. login to EBS as your user and navigate to SYSTEM ADMINSTRATOR> SECURITY> USER> DEFINE
+1. login to EBS as your user and navigate to SYSTEM ADMINISTRATOR> SECURITY> USER> DEFINE
 2. Query your user and add a new responsibility called Workflow Administrator Web Applications
-3. Navigate to Workflow Administrator Web Applications> ADMINSTRATOR WORKFLOW> ADMINSTRATION and realise how only sysadmin can work on it
+3. Navigate to Workflow Administrator Web Applications> ADMINISTRATOR WORKFLOW> ADMINISTRATION and realise how only sysadmin can work on it
 4. open Oracle Workflow Builder and click file> Quick Start Wizard
 	Internal Name: TIB_WF
 	Display Name: TIB_WF
@@ -30,12 +30,12 @@
 	User: apps
 	Connect :EBSDB
 		<OK>
-10. go back to EBS and Navigate to Workflow Administrator Web Applications> ADMINSTRATOR WORKFLOW> DEVELOPER STUDIO
+10. go back to EBS and Navigate to Workflow Administrator Web Applications> ADMINISTRATOR WORKFLOW> DEVELOPER STUDIO
 	Workflow Type: TIB_WF
 	Type Internal Name: TIB_WF
 		<GO> (cannot run)
 11. log out of your user and login as SYSADMIN
-12. Navigate to Workflow Administrator Web Applications> ADMINSTRATOR WORKFLOW> DEVELOPER STUDIO
+12. Navigate to Workflow Administrator Web Applications> ADMINISTRATOR WORKFLOW> DEVELOPER STUDIO
 	Workflow Type: TIB_WF
 	Type Internal Name: TIB_WF
 		<GO> (you can see run)

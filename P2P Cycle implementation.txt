@@ -1,4 +1,4 @@
--- P2P Cycle--
+-- P2P Cycle --
 1.log in to EBS
 2. Assign responsibilities to your user by navigating to SYSTEM ADMINISTRATOR> SECURITY> USER> DEFINE
 3. add the following responsibilities
