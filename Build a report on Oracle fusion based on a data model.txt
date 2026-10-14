@@ -1,0 +1,35 @@
+-- report w/data model --
+1. Log in to oracle fusion
+2. tools>reports and analytics> browse catalog
+3. new> folder and name it TS
+4. create> data model
+5. plus sign> SQL Query
+	name: TS_DM_BU_AbsenceMgmt
+	data source: Oracle BI EE
+	type of SQL: Standard SQL
+		<query builder>
+			payables invoices - Transactions Real Time
+                    click invoice accounting
+                        select:
+                        SLA Unrounded Entered Amount credit
+                        SLA Unrounded Entered Amount debit
+                        Ledger_Currency_Name
+                        Ledger_Currency
+                        Invoice_Currency
+                        Invoice_Currency_Name
+                            <save>
+                            <ok>
+            <data> tab
+            <view>
+            <save as sample data>
+            save it
+6. go to create> report > use data model
+        browse the data model
+            <next>
+        page header
+        table
+            <next>
+        drag the columns and uncheck show grand totals row
+            <finish>
+        save as : TS_BU_AbsenceMgmt_report
+7. CLICK on pdf sign on top right corner
