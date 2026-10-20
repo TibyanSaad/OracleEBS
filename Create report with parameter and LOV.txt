@@ -1,103 +1,30 @@
+-- report w/data model LOV --
+1. Log in to oracle fusion
+2. tools>reports and analytics> browse catalog
+3. new> folder and name it TS
+4. create> data model
+5. plus sign> SQL Query
+	name: TS_DM_BU_AbsenceMgmt
+	data source: Oracle BI EE
+	type of SQL: Standard SQL
+		<query builder>
+			payables invoices - Transactions Real Time
+department table
+department name
+department address
+location code
+location name
+--- CONDITIONS TAB
+	Location name: =:LOC_NAME
 
--- report w/parameter & LOV --
-1. edit the data model
-2. GO TO list of values and add a list of values
-	name: CURR_LOV
-	Data Source: Oracle BI EE
-	SQL Query: <query builder>
-	select table and column used
-	<save>
-3.GO TO parameter
-	Parameter type: menu
-	All values passed
-	<save>
-
-
--- Report bursting --
-1.log in to fusion
-2. navigate to tools> reports and analytics> browse catalog
-3. create> data model
-	name: DM_SUPPLIER_BURSTING
-	data source: jdbcAuditViewDataSource
-	SQL query: SELECT 1001 AS supplier_id,
-       'Gulf Star LLC' AS supplier_name,
-       1250 AS invoice_amount
-FROM dual
-UNION ALL
-SELECT 1002,
-       'Muscat Office Supplies',
-       2400
-FROM dual
-UNION ALL
-SELECT 1003,
-       'Oman Tech Services',
-       3600
-FROM dual
-ORDER BY 1
-4. data tab> view> save as sample data then save it as DM_SUPPLIER_BURSTING
-5. create> report
-	name:
-	page header
-	table
-	drag all the columns
-	uncheck show grand total
-	save as REPORT_DM_SUPPLIER_BURSTING
-6. click pdf button and create a template by selecting rtf
-7. click catalog and click edit report> properties> upload template
-	template File: REPORT_DM_SUPPLIER_BURSTING.rtf
-	locale: English
-
-8.go back and edit the data model
-9. go to bursting menu
-	Name: Bursting_SUPPLIER
-	data source: jdbcAuditViewDataSource
-	split by: /data_ds/g_1/supplier_id
-	deliver by: /data_ds/g_1/supplier_id
-	SQL Query: SELECT
-    '1001' KEY,
-    'REPORT_SUPPLIER_BURSTING_REPORT_SUPPLIER_BURSTING' TEMPLATE,
-    'RTF' TEMPLATE_FORMAT,
-    'en-US' LOCALE,
-    'PDF' OUTPUT_FORMAT,
-    'EMAIL' DEL_CHANNEL,
-    'supplier1@example.com' PARAMETER1,
-    NULL PARAMETER2,
-    NULL PARAMETER3,
-    'Supplier Payment Advice - Gulf Star LLC' PARAMETER4,
-    'Please find your payment advice attached.' PARAMETER5,
-    'true' PARAMETER6,
-    'noreply@example.com' PARAMETER7
-FROM dual
-UNION ALL
-SELECT
-    '1002',
-    'REPORT_SUPPLIER_BURSTING_REPORT_SUPPLIER_BURSTING',
-    'RTF',
-    'en-US',
-    'PDF',
-    'EMAIL',
-    'supplier2@example.com',
-    NULL,
-    NULL,
-    'Supplier Payment Advice - Muscat Office Supplies',
-    'Please find your payment advice attached.',
-    'true',
-    'noreply@example.com'
-FROM dual WHERE 1=1
-UNION ALL
-SELECT
-    '1003',
-    'REPORT_SUPPLIER_BURSTING_REPORT_SUPPLIER_BURSTING',
-    'RTF',
-    'en-US',
-    'PDF',
-    'EMAIL',
-    'saad.tibyan02@gmail.com',
-    NULL,
-    NULL,
-    'Supplier Payment Advice - Oman Tech Services',
-    'Please find your payment advice attached.',
-    'true',
-    'noreply@example.com'
-FROM dual WHERE 1=1
-10. DATA TAB> VIEW> SAVE AS SAMPLE DATA
+6.data tab> view> save as sample data> save it
+7. create> report > use data model
+8. browse the data model
+		<next>
+		page header
+		table
+		<next>
+		drag the columns and uncheck show grand totals row
+		< finish>
+		save as : TS_BU_AbsenceMgmt_report
+		CLICK on pdf sign on top right corner
