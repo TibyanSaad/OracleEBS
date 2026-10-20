@@ -10,7 +10,7 @@ select	 "- Invoice Accounting"."SLA Unrounded Entered Amount Credit" as "SLA Unr
 	 "- Invoice Accounting"."Invoice Currency Name" as "Invoice Currency Name"
  from	"Payables Invoices - Transactions Real Time"."- Invoice Accounting" "- Invoice Accounting" WHERE  "- Invoice Accounting"."Ledger Currency Name" = :CURR
 <save>
-4. go to data tab an type parameter value
+4. go to data tab and type parameter value
 	curr: Euro
 	<view>
 5. run the report and see the output
